@@ -2,7 +2,7 @@ var clicks = 0;
 function add() {
   score++
   //We are using the document.getElementById('').innerHTML method
-  document.getElementById("score").innerHTML = "Score: " + clicks; 
+  document.getElementById("clicks").innerHTML = "Score: " + clicks; 
   //updates the score every time the button is clicked
 }
 
@@ -14,7 +14,7 @@ function buyCursor(){
         cursors = cursors + 1;                                   //increases number of cursors
     	clicks = clicks - cursorCost;                          //removes the clicks spent
         document.getElementById('cursors').innerHTML = cursors;  //updates the number of cursors for the user
-        document.getElementById('clicks').innerHTML = score;  //updates the number of cookies for the user
+        document.getElementById('clicks').innerHTML = clicks;  //updates the number of cookies for the user
     };
     var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
     document.getElementById('cursorCost').innerHTML = nextCost;  //updates the cursor cost for the user
