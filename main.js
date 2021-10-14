@@ -30,9 +30,9 @@ var farms = 0;
 function buyFarm(){
     var farmCost = Math.floor(100 * Math.pow(1.3,farms));     
     if(clicks >= farmCost){                                  
-        farm = farms + 1;                                
+        farms = farms + 1;                                
     	clicks = clicks - farmCost;                          
-        document.getElementById('cursors').innerHTML = farms; 
+        document.getElementById('farms').innerHTML = farms; 
         document.getElementById('cookies').innerHTML = clicks;  
     };
     var nextCost = Math.floor(100 * Math.pow(1.3,farms));       
