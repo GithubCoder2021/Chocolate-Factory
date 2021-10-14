@@ -13,14 +13,34 @@ function buyCursor(){
         cursors = cursors + 1;                                   //increases number of cursors
     	clicks = clicks - cursorCost;                          //removes the cookies spent
         document.getElementById('cursors').innerHTML = cursors;  //updates the number of cursors for the user
-        document.getElementById('cookies').innerHTML = cl;  //updates the number of cookies for the user
+        document.getElementById('clicks').innerHTML = clicks;  //updates the number of cookies for the user
     };
-    var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
+    var nextCost = Math.floor(10 * Math.pow(1.2,cursors));       //works out the cost of the next cursor
     document.getElementById('cursorCost').innerHTML = nextCost;  //updates the cursor cost for the user
 };
 
 window.setInterval(function(){
 	
 	clicksClick(cursors);
+	
+}, 1000);
+
+var farms = 0;
+
+function buyFarm(){
+    var farmCost = Math.floor(100 * Math.pow(1.3,farms));     
+    if(clicks >= farmCost){                                  
+        farm = farms + 1;                                
+    	clicks = clicks - farmCost;                          
+        document.getElementById('cursors').innerHTML = farms; 
+        document.getElementById('cookies').innerHTML = clicks;  
+    };
+    var nextCost = Math.floor(100 * Math.pow(1.3,farms));       
+    document.getElementById('farmCost').innerHTML = nextCost;  
+};
+
+window.setInterval(function(){
+	
+	clicksClick(farms);
 	
 }, 1000);
