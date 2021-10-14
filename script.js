@@ -22,6 +22,6 @@ function buyCursor(){
 
 window.setInterval(function(){
 	
-	cookieClick(cursors);
+	Click(cursors);
 	
 }, 1000);
