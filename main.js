@@ -28,14 +28,14 @@ window.setInterval(function(){
 var farms = 0;
 
 function buyFarm(){
-    var farmCost = Math.floor(10 * Math.pow(1.3,farms));     
+    var farmCost = Math.floor(100 * Math.pow(1.3,farms));     
     if(clicks >= farmCost){                                  
         farms = farms + 1;                                
     	clicks = clicks - farmCost;                          
         document.getElementById('farms').innerHTML = farms; 
         document.getElementById('cookies').innerHTML = clicks;  
     };
-    var nextCost = Math.floor(10 * Math.pow(1.3,farms));       
+    var nextCost = Math.floor(100 * Math.pow(1.3,farms));       
     document.getElementById('farmCost').innerHTML = nextCost;  
 };
 
