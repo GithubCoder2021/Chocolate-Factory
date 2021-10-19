@@ -1,46 +1,61 @@
-var clicks = 0;
+var clicks = 10;
+var generators = []
+var lastUpdate = Date.now()
 
-function clicksClick(number){
-    clicks = clicks + number;
-    document.getElementById("clicks").innerHTML = clicks;
-};
+for (let i = 0; i < 10; i++) {
+  let generator = {
+    cost: Math.pow(Math.pow(10, i), i) * 10,
+    bought: 0,
+    amount: 0,
+    mult: 1
+  }
+  generators.push(generator)
+}
 
-var cursors = 0;
+function format(amount) {
+  let power = Math.floor(Math.log10(amount))
+  let mantissa = amount / Math.pow(10, power)
+  if (power < 3) return amount.toFixed(2)
+  return mantissa.toFixed(2) + "e" + power
+}
 
-function buyCursor(){
-    var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));     //works out the cost of this cursor
-    if(clicks >= cursorCost){                                   //checks that the player can afford the cursor
-        cursors = cursors + 1;                                   //increases number of cursors
-    	clicks = clicks - cursorCost;                          //removes the cookies spent
-        document.getElementById('cursors').innerHTML = cursors;  //updates the number of cursors for the user
-        document.getElementById('clicks').innerHTML = clicks;  //updates the number of cookies for the user
-    };
-    var nextCost = Math.floor(10 * Math.pow(1.2,cursors));       //works out the cost of the next cursor
-    document.getElementById('cursorCost').innerHTML = nextCost;  //updates the cursor cost for the user
-};
+function buyGenerator(i) {
+  let g = generators[i - 1]
+  if (g.cost > money) return
+  money -= g.cost
+  g.amount += 1
+  g.bought += 1
+  g.mult *= 1.05
+  g.cost *= 1.5
+}
 
-window.setInterval(function(){
-	
-	clicksClick(cursors);
-	
-}, 1000);
 
-var farms = 0;
+function updateGUI() {
+  document.getElementById("currency").textContent = "You have $" + format(money)
+  for (let i = 0; i < 10; i++) {
+    let g = generators[i]
+    document.getElementById("gen" + (i + 1)).innerHTML = "Amount: " + format(g.amount) + "<br>Bought: " + g.bought + "<br>Mult: " + format(g.mult) + "x<br>Cost: " + format(g.cost)
+    if (g.cost > money) document.getElementById("gen" + (i + 1)).classList.add("locked")
+    else document.getElementById("gen" + (i + 1)).classList.remove("locked")
+  }
+}
 
-function buyFarm(){
-    var farmCost = Math.floor(100 * Math.pow(1.3,farms));     
-    if(clicks >= farmCost){                                  
-        farms = farms + 1;                                
-    	clicks = clicks - farmCost;                          
-        document.getElementById('farms').innerHTML = farms; 
-        document.getElementById('cookies').innerHTML = clicks;  
-    };
-    var nextCost = Math.floor(100 * Math.pow(1.3,farms));       
-    document.getElementById('farmCost').innerHTML = nextCost;  
-};
+function productionLoop(diff) {
+  money += generators[0].amount * generators[0].mult * diff
+  for (let i = 1; i < 10; i++) {
+    generators[i - 1].amount += generators[i].amount * generators[i].mult * diff / 5
+  }
+}
 
-window.setInterval(function(){
-	
-	clicksClick(farms);
-	
-}, 1000);
+function mainLoop() {
+  var diff = (Date.now() - lastUpdate) / 1000
+
+  productionLoop(diff)
+  updateGUI()
+
+  lastUpdate = Date.now()
+}
+
+setInterval(mainLoop, 50)
+
+updateGUI()
