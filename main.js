@@ -27,7 +27,7 @@ window.setInterval(function(){
 
 var farms = 0;
 
-function buyCursor(){
+function buyFarm(){
     var farmCost = Math.floor(10 * Math.pow(1.5,farms));     //works out the cost of this cursor
     if(chocolates >= farmCost){                                   //checks that the player can afford the cursor
         farms = farms + 1;                                   //increases number of farms
