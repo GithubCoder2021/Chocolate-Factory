@@ -1,6 +1,6 @@
 var chocolates = 0;
 
-function clicksClick(number){
+function chocolatesClick(number){
     chocolates = chocolates + number;
     document.getElementById("chocolates").innerHTML = chocolates;
 };
