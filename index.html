@@ -3,9 +3,13 @@
 		<link rel="stylesheet" type="text/css" href="interface.css" />
 	</head>
 	<body>
-	
-			<h1 id="chocolates">0 chocolates</h1>
+	 <script>var chocolates = 0;
+function chocolate_clicked () {
+  chocolates++;
+  document.querySelector("#chocolates").innerHTML = "you have"+chocolates+" chocolates"
+}       </script>
+			<h1 id="chocolates">you have 0 chocolates</h1>
 		<button onclick="chocolate_clicked ()">Make 1 chocolate</button>
-				 <script src="main.js"></script>
+
 	</body>
 </html>
