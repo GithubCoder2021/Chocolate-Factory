@@ -1,8 +1,8 @@
-# Clicker-Game
+# Chocolate-Factory
 I will work on it
 
 Play it here:
-https://githubcoder2021.github.io/Clicker-Game/
+https://githubcoder2021.github.io/Chocolate-Factory/
 v0.1.0
 
 Ideas:
