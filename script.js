@@ -29,11 +29,11 @@ function buyWorker() {
 	 
 	        workersCost *=2; // doubles price of that item 
 
-	document.getElementById("workersCost").innerText = workersCost;
+	        document.getElementById("workersCost").innerText = workersCost;
 
-	chocoPerSecond += 1; // increases number of apples per second
+	        chocoPerSecond += 1; // increases number of apples per second
 
-	document.getElementById("showChocolatesPerSecond").innerText = chocoPerSecond;	
+	        document.getElementById("showChocolatesPerSecond").innerText = chocoPerSecond;	
 
 	}	else { 
 		alert("Get more Chocolates!") 
