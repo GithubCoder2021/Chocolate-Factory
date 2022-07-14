@@ -21,7 +21,7 @@ function buyWorker() {
 		
 		chocolates -= workersCost; // subtracts cost apples 
 
-		document.getElementById("showApples").innerText = chocolates; 
+		document.getElementById("showChocolates").innerText = chocolates; 
 
 		workers++;
 
