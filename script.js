@@ -9,7 +9,7 @@ function increment() {
 var workers = 0;
 var workersCost = 25;
 var cursors = 0;
-var cursorsCost = 0;
+var cursorsCost = 100;
 
 setInterval(function() {
   chocolates += chocoPerSecond;
