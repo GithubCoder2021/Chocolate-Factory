@@ -66,3 +66,22 @@ function buyCursor() {
 		alert("Get more Chocolates!") 
 	}
 }
+
+
+function save() {
+  var save = {
+     chocolates: chocolates,
+     chocoPerSec: chocoPerSec,
+     chocoPerClick: chocoPerClick
+      };
+  localStorage.setItem("save",JSON.stringify(save));	
+}
+
+function load() {
+    var savegame = JSON.parse(localStorage.getItem("save"));
+    if (typeof savegame.chocolates !== "undefined") chocolates = savegame.chocolates;
+    if (typeof savegame.chocoPerSec !== "undefined") chocoPerSec = savegame.chocoPerSec;
+    if (typeof savegame.chocoPerClick !== "undefined") chocoPerClick = savegame.chocoPerClick;
+	
+}
+   
